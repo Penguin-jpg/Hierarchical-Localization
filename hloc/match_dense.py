@@ -36,6 +36,26 @@ from .utils.parsers import names_to_pair, parse_retrieval
 #      images, export_dir=outputs, features_ref=features, max_kps=None)
 
 confs = {
+    "roma": {
+        "output": "matches-roma",
+        "model": {
+            "name": "roma",
+            "weights": "outdoor",
+            # "max_keypoints": 2000,
+            "max_keypoints": 15000,
+            "match_threshold": 0.2,
+        },
+        "preprocessing": {
+            "grayscale": False,
+            "force_resize": True,
+            "resize_max": 1024,
+            "width": 560,
+            "height": 560,
+            "dfactor": 14,
+        },
+        'max_error': 2,  # max error for assigned keypoints (in px)
+        'cell_size': 8,  # size of quantization patch (max 1 kp/patch)
+    },
     # Best quality but loads of points. Only use for small scenes
     "loftr": {
         "output": "matches-loftr",
